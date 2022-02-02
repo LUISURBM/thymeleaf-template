@@ -39,7 +39,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * Basic integration tests for demo application.
  * 
- * @author Dave Syer
+ * @author Luis Urbina
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = SampleWebUiApplication.class)

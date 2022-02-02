@@ -46,7 +46,6 @@ import co.com.quipux.javalang.ui.ListaReproduccion;
 public class ListaRepController {
     private final ListaRepRepository listaRepRepository;
     private final ObjectMapper mapper = new ObjectMapper();
-
     @Autowired
     public ListaRepController(ListaRepRepository messageRepository) {
 	this.listaRepRepository = messageRepository;

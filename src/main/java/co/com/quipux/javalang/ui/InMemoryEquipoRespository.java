@@ -21,7 +21,7 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * @author Dave Syer
+ * @author Luis Urbina
  */
 public class InMemoryEquipoRespository implements EquipoRepository {
 

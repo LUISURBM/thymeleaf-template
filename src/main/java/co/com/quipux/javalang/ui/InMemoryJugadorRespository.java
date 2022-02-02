@@ -23,7 +23,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
 /**
- * @author Dave Syer
+ * @author Luis Urbina
  */
 public class InMemoryJugadorRespository implements JugadorRepository {
 

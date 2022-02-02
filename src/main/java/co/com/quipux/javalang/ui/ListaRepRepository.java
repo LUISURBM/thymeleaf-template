@@ -14,7 +14,7 @@
 package co.com.quipux.javalang.ui;
 
 /**
- * @author Rob Winch
+ * @author Luis Urbina
  */
 public interface ListaRepRepository {
 
