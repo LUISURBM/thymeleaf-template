@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+
+<head>
+	<title>Equipos : Ver todos</title>
+</head>
+
+<body>
+	<h1 layout:fragment="header">Equipos : Ver todos</h1>
+	<div layout:fragment="content" class="container">
+		<div class="pull-right">
+			<a href="form.html" th:href="@{/equipos/(form)}">Crear nuevo equipo</a>
+		</div>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<td>ID</td>
+					<td>Created</td>
+					<td>Nombre</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:if="${equipos.empty}">
+					<td colspan="3">
+						No equipos
+					</td>
+				</tr>
+				<tr th:each="equipo : ${equipos}">
+					<td th:text="${equipo .id}">1</td>
+					<td th:text="${#calendars.format(equipo.created)}">
+						July 11, 2012 2:17:16 PM CDT
+					</td>
+					<td>
+						<a href="view.html" th:href="@{'/equipos/' + ${equipo.id}}" th:text="${equipo.fullname}">
+							Nombre del equipo
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+
+</html>

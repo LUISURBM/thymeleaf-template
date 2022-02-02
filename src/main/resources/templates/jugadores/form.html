@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+
+<head>
+	<title>Jugador : Crear</title>
+</head>
+
+<body>
+	<h1 layout:fragment="header">Jugador : Crear</h1>
+	<div layout:fragment="content" class="container">
+		<form id="messageForm" th:action="@{/jugadores/(form)}" th:object="${jugador}" action="#" method="post">
+			<div th:if="${#fields.hasErrors('*')}" class="alert alert-error">
+				<p th:each="error : ${#fields.errors('*')}" th:text="${error}">
+					Validation error
+				</p>
+			</div>
+			<div class="pull-right">
+				<a th:href="@{/jugadores}" href="jugadores.html">
+					Jugadores
+				</a>
+			</div>
+			<label for="nombres">Nombre</label>
+			<input type="text" th:field="*{nombres}" th:class="${#fields.hasErrors('nombres')} ? 'field-error'" />
+			<label for="posicion">Posicion</label>
+			
+			<select name="posicion" th:field="*{posicion}" th:class="${#fields.hasErrors('posicion')} ? 'field-error'" >
+				<option th:each="colorOpt : ${T(co.com.quipux.javalang.ui.Posicion).values()}" th:value="${colorOpt}"
+					th:text="${colorOpt}"></option>
+			</select>
+			<label for="edad">Edad</label>
+			<input type="number" th:field="*{edad}" th:class="${#fields.hasErrors('edad')} ? 'field-error'" />
+
+			<div class="form-actions">
+				<input type="submit" value="Create" />
+			</div>
+		</form>
+	</div>
+</body>
+
+</html>

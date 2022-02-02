@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+
+<head>
+	<title>Equipo : Crear</title>
+</head>
+
+<body>
+	<h1 layout:fragment="header">Equipo : Crear</h1>
+	<div layout:fragment="content" class="container">
+		<form id="messageForm" th:action="@{/equipos/(form)}" th:object="${equipo}" action="#" method="post">
+			<div th:if="${#fields.hasErrors('*')}" class="alert alert-error">
+				<p th:each="error : ${#fields.errors('*')}" th:text="${error}">
+					Validation error
+				</p>
+			</div>
+			<div class="pull-right">
+				<a th:href="@{/equipos}" href="equipos.html">
+					Equipos
+				</a>
+			</div>
+			<label for="fullname">Nombre equipo</label>
+			<input type="text" th:field="*{fullname}" th:class="${#fields.hasErrors('fullname')} ? 'field-error'" />
+			<label for="fullname">Estadio</label>
+			<select name="posicion" th:field="*{stadium}" th:class="${#fields.hasErrors('stadium')} ? 'field-error'">
+				<option th:each="colorOpt : ${T(co.com.quipux.javalang.ui.Estadio).values()}" th:value="${colorOpt}"
+					th:text="${colorOpt}"></option>
+			</select>
+			<label for="stadium">Cantidad de titulos</label>
+			<input type="number" th:field="*{trophies}" th:class="${#fields.hasErrors('trophies')} ? 'field-error'" />
+
+			<label for="plantilla">Plantilla</label>
+			<select id="plantilla" th:field="*{plantilla}" size="10" multiple="multiple">
+				<option th:each="j : ${allPlayers}" th:value="${{j}}" th:text="${j.nombres}">
+					Jugadores
+				</option>
+			</select>
+			<label for="suplentes">Suplentes</label>
+			<select id="suplentes" th:field="*{suplentes}" size="10" multiple="multiple">
+				<option th:each="j : ${allPlayers}" th:value="${{j}}" th:text="${j.nombres}">
+					Jugadores
+				</option>
+			</select>
+
+			<div class="form-actions">
+				<input type="submit" value="Create" />
+			</div>
+		</form>
+	</div>
+</body>
+
+</html>
